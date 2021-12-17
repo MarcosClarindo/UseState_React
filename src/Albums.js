@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Templete from './Templete';
+
 import Loading from './Loading';
 
 const Albums = () => {
@@ -19,10 +19,9 @@ const [albums, setAlbums] = useState([])
             })
     },[])
     return(
-        <Templete title="Álbuns">
+        <>
             <Loading visible = {isLoading}/>
             
-           
             {
                 albums.map(album => {
                     return (
@@ -33,7 +32,7 @@ const [albums, setAlbums] = useState([])
                 })
             }
 
-        </Templete>
+        </>
     )
 }
 

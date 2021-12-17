@@ -1,7 +1,10 @@
 import React from "react";
+
+import Templete from "./Templete";
 import Counter from './Counter'
 import Albums from "./Albums";
 import User from "./User"
+
 import { useState } from 'react';
 
 const defaultPage = 'albums'
@@ -29,19 +32,12 @@ function App(){
         setPage(page)
     }
 
-   const Page = pages [page].component
+    const Page = pages[page].component
 
-    // váriavel para criar botões
-   const pageNames = Object.keys(pages)
     return (
-    <>
-        {
-            pageNames.map(page => <button onClick={() => handleChangePage(page)}>{pages[page].text}</button>)
-        }
-
-        {Page && <Page/> }
-        
-    </>
+        <Templete pages={pages} activePage={page} onChangePage={handleChangePage}>
+         {Page && <Page/> }
+        </Templete>
     )
 }
 

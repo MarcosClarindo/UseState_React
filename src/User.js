@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import Templete from "./Templete";
 import Loading from "./Loading";
 
 const User = () => {
@@ -23,24 +22,22 @@ const User = () => {
     },[])
 
     return (
-        <Templete title="Usuários">
-                <Loading visible = {isLoading}/>
-
-                {
-                    user.map(user => {
-                        return (
+        <>
+            <Loading visible = {isLoading}/>
+            {
+                user.map(user => {
+                    return (
                             // adicionando estylo
-                            <div style={{margin: '10px'}}>
+                        <div style={{margin: '10px'}}>
                                 <b>Id:</b> {user.id}<br/>
                                 <b>Nome:</b> {user.name}<br/>
                                 <b>E-mail:</b> {user.email}<br/>
-                                <b>phone:</b> {user.phone}<br/>
-                            
-                            </div>
-                        )
-                    })
-                }
-        </Templete>
+                                <b>phone:</b> {user.phone}<br/>  
+                        </div>
+                    )
+                })
+            }
+        </>
     )
 }
 
