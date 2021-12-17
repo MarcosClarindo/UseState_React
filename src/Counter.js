@@ -1,4 +1,5 @@
 import React from "react";
+import Templete from "./Templete";
 import './Counter.css'
 import { useState, useEffect } from 'react';
 
@@ -18,11 +19,13 @@ const  Counter = () => {
         setContador(novoValor)
     }
     return(
-        <div className="counter">
-            <span>{contador}</span>
-            <button onClick={() => handleOnClick('-')}>-</button>
-            <button onClick={() =>handleOnClick('+')}>+</button>
-        </div>
+        <Templete title="Contador">
+            <div className="counter">
+                <span>{contador}</span>
+                <button onClick={() => handleOnClick('-')}>-</button>
+                <button onClick={() =>handleOnClick('+')}>+</button>
+            </div>
+        </Templete>
     )
 }
 

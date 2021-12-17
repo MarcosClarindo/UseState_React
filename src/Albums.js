@@ -1,29 +1,28 @@
 import React, {useEffect, useState} from 'react';
+import Templete from './Templete';
+import Loading from './Loading';
 
 const Albums = () => {
-const [loading, setLoanding] = useState(false)
+const [isLoading, setIsLoanding] = useState(false)
 const [albums, setAlbums] = useState([])
 
     // Fazendo uma chamada em uma API recomendado o uso do "userEffect"
     useEffect(() => {
-        setLoanding(true)
+        setIsLoanding(true)
 
 
         fetch('https://jsonplaceholder.typicode.com/albums')
             .then(response => response.json()) 
             .then(data => {
                 setAlbums(data)
-                setLoanding(false)
+                setIsLoanding(false)
             })
     },[])
     return(
-        <>
-
-            <h1>Álbums</h1>
+        <Templete title="Álbuns">
+            <Loading visible = {isLoading}/>
             
-            {
-                loading ===  true ? 'Carregando...' : ''
-            }
+           
             {
                 albums.map(album => {
                     return (
@@ -34,7 +33,7 @@ const [albums, setAlbums] = useState([])
                 })
             }
 
-        </>
+        </Templete>
     )
 }
 
